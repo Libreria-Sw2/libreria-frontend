@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+<div class="container" style="width:750px">
+  <h1 class="display-1 my-3" style="text-align: center;">Formulario de Libro</h1>
+  <form [formGroup]="libroInfo" (ngSubmit)="onCrearLibro(libroInfo.value)" class="row g-3 needs-validation" >
+    <div class="col-md-12">
+      <label for="titulo" class="form-label">Titulo</label>
+      <input type="text" class="form-control" id="titulo" formControlName="titulo" required>
+    </div>
+    <div class="col-md-12">
+      <label for="descripcion" class="form-label">Descripcion</label>
+      <textarea class="form-control" id="descripcion" formControlName="descripcion" rows="2"></textarea>
+    </div>
+    <div class="col-md-6">
+      <label for="autor" class="form-label">Autor</label>
+      <input type="text" class="form-control" id="autor" formControlName="autor" required>
+    </div>
+    <div class="col-md-6">
+      <label for="editorial" class="form-label">Editorial</label>
+      <input type="text" class="form-control" id="editorial" formControlName="editorial" required>
+    </div>
+    <div class="col-md-4">
+      <label for="fechaDePublicacion" class="form-label">Fecha de Publicacion</label>
+      <input type="date" class="form-control" id="fechaDePublicacion" formControlName="fechaDePublicacion" required>
+    </div>
+    <div class="col-md-4">
+      <label for="codigoISBN" class="form-label">Codigo ISBN</label>
+      <input type="text" class="form-control" id="codigoISBN" formControlName="codigoISBN" required>
+    </div>
+    <div class="col-md-4">
+        <label for="lenguaje" class="form-label">Lenguaje</label>
+        <input class="form-control" list="datalistOptionsLenguaje" id="lenguaje" formControlName="lenguaje">
+        <datalist id="datalistOptionsLenguaje">
+          <option value="Castellano">
+          <option value="Ingles">
+          <option value="Aleman">
+          <option value="Frances">
+          <option value="Italiano">
+          <option value="Ruso">
+        </datalist>
+    </div>
+    <div class="col-md-4">
+      <label for="genero" class="form-label">Genero</label>
+      <input class="form-control" list="datalistOptionsGenero" id="genero" formControlName="genero">
+      <datalist id="datalistOptionsGenero">
+        <option value="Fantasia">
+        <option value="Infantil">
+        <option value="Biografia">
+        <option value="Poesia">
+        <option value="Ensayo">
+        <option value="Academico">
+      </datalist>
+    </div>
+    <div class="col-md-4">
+      <label for="paginas" class="form-label">Paginas</label>
+      <input type="number" class="form-control" id="paginas" formControlName="paginas" required>
+    </div>
+    <div class="col-md-4">
+      <label for="puntuacion" class="form-label">Puntuacion</label>
+      <input type="number" min="0" max="5" class="form-control" id="puntuacion" formControlName="puntuacion" required>
+    </div>
+    <div class="col-md-6">
+        <label for="archivo" class="form-label">Libro</label>
+        <input class="form-control" type="file" id="archivo" accept="application/pdf" (change)="archivoSeleccionado($event)">
+    </div>
+    <div class="col-md-6">
+        <label for="portada" class="form-label">Portada de Libro</label>
+        <input class="form-control" type="file" id="portada" accept="image/*" (change)="archivoSeleccionado($event)">
+    </div>
+    <div>
+        <img [src]="preview" class="preview" style="object-fit: contain; margin-left: 70%; width: 100px; height: 150px; border: solid 1px #CCC">
+    </div>
+    <div class="col-md-12 mb-5">
+      <button class="btn btn-primary btn-lg btn-block" type="submit">Crear Libro</button>
+    </div>
+  </form>
+
+</div>

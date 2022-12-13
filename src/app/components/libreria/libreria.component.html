@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="container" style="width:1000px">
+
+  <div class="input-group my-5 mx-auto" style="width:700px;">
+    <select class="form-select" id="inputGroupSelect02" style="width: 150px; flex: 0 0 auto;" [(ngModel)]="categoria">
+      <option selected value="titulo">Titulo</option>
+      <option value="autor">Autor</option>
+      <option value="editorial">Editorial</option>
+      <option value="lenguaje">Lenguaje</option>   
+    </select>
+    <input type="text" class="form-control" placeholder="Buscador" aria-label="buscador" aria-describedby="basic-addon2" [(ngModel)]="searchText">
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-6 mb-5 g-4">
+    <div *ngFor="let libro of libros| appFilter: searchText : categoria | async" >
+        <div class="col">
+            <div class="card">
+              <img src="{{ libro.portadaURL }}" style="object-fit: contain; height: 175px;" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 12px;"><b>{{libro.titulo}}</b></h5>
+                <h5 class="card-title" style="font-size: 12px;">{{libro.autor}}</h5>
+                <p class="card-text">{{ repetirEstrella("★", libro.puntuacion) }}</p>
+                <a class="btn btn-primary btn-sm" style="width: 100%;" role="button" [routerLink]="['/libro', libro.id]">Leer</a>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
