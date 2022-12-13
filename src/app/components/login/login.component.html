@@ -1,0 +1,67 @@
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form id="login-form" class="form" action="" method="post">
+                        <h3 class="text-center">Libreria Ficct - Login</h3>
+                        <div class="form-group">
+                            <label for="usuario">Usuario:</label><br>
+                            <input  type="text" name="usuario" id="usuario" [(ngModel)]="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Contraseña:</label><br>
+                          <input  type="password" name="password" id="password" [(ngModel)]="password" class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <label for="camara">Camara:</label><br>
+                                <webcam
+                                    [trigger]="invokeObservable"
+                                    [width]="240" 
+                                    [height]="240"
+                                    [allowCameraSwitch]="false"
+                                    (imageCapture)="captureImg($event)"
+                                ></webcam>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="foto">Foto:</label><br>
+                                <img [src]="webcamImage?.imageAsDataUrl" height="180px" />
+                              </div>
+                            </div>
+                            <div class="mt-2" style="display: flex; justify-content: center;">
+                              <button class="btn btn-danger" (click)="getSnapshot()">
+                                Capturar Imagen
+                              </button>
+                            </div>
+                            
+                          </div>
+                          <div class="form-group mt-2">
+                            <label for="usuario">Tipo de Cuenta:</label><br>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1" (click)="changeTipo('Lector')">Lector</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2" (click)="changeTipo('Administrador')">Administrador</label>
+                            </div>
+                          </div>
+                        <div class="form-group mt-2">
+                            <button class="btn btn-primary" style="width: 100%;" (click)="verificarUsuario()">
+                                Logearse
+                            </button>
+                        </div>
+                        <div id="register-link" class="text-right">
+                            No estas Registrado? <a routerLink="/registro" style="color: red;">Registrate</a>
+                        </div>
+                        <div id="suscripcion-link" class="text-right">
+                          No tienes ningun Plan? <a routerLink="/pagos" style="color: red;">Suscribete</a>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

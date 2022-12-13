@@ -1,0 +1,22 @@
+#login {
+    margin: 0;
+    padding: 0;
+    background-image: url("../../../assets/images/cover-library.jpg");
+    background-size: 100%;
+    background-size: cover;
+    height: 100vh;
+  }
+  #login .container #login-row #login-column #login-box {
+    margin-top: 5px;
+    max-width: 1024px;
+    height: 640px;
+    border: 4px solid #9C9C9C;
+    background-color: #EAEAEA;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    font-size: 10px;
+    text-align: center;
+  }
