@@ -1,0 +1,76 @@
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form id="login-form" class="form" action="" method="post">
+                        <h3 class="text-center">Libreria Ficct - Suscripcion</h3>
+                        <div class="form-group">
+                          <label for="name">Usuario:</label>
+                          <input type="text" name="name" id="name" [(ngModel)]="user_name" class="form-control">
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="subscripcion">Elige tu tipo de Suscripcion</label>
+                            <select id="subscripcion" class="form-control">
+                                <option (click)="cambiarMonto('5', 'DIA')">Suscripcion - Dia (5 bs)</option>
+                                <option (click)="cambiarMonto('50', 'MENSUAL')">Suscripcion - Mensual (50 bs)</option>
+                                <option (click)="cambiarMonto('500', 'ANUAL')">Suscripcion - Anual (500 bs)</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-4">
+                            <img [src]="qr" class="qr" style="object-fit: contain; margin-left: 20%; width: 300px; height: 300px; border: solid 1px #CCC">
+                        </div>
+
+                        <div *ngIf="esCambioSubcripcion" class="form-group mt-4">
+                            <button class="btn btn-success" style="width: 100%;" (click)="generarQR()">
+                                Generar QR
+                            </button>
+                        </div>
+
+                        <div *ngIf="!esCambioSubcripcion" class="form-group mt-4">
+                            <button class="btn btn-primary" style="width: 100%;" (click)="verificarPago()">
+                                Verificar Pago
+                            </button>
+                        </div>
+
+                        <div id="register-link" class="text-right">
+                            No estas Registrado? <a routerLink="/registro" style="color: red;">Registrate</a>
+                        </div>
+                    </form>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Libreria FICCT</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h3>Felicidades, Disfruta de tu Plan!</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="volverLogin()">
+          Ir al login
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
